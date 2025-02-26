@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #FFFFFF;
+  color: #000;
+}
+
+header {
+  background-color: #F44336;
+  padding: 16px;
+  text-align: center;
+  color: #FFF;
+}
+
+.container {
+  padding: 20px;
+  text-align: center;
+}
+
+.rounded-button {
+  background-color: #F44336;
+  border: none;
+  border-radius: 25px;
+  color: #FFF;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+.rounded-button:hover {
+  background-color: #D32F2F;
+}
+
+/* Styling for the log window */
+.log-window {
+  margin: 20px auto;
+  padding: 15px;
+  width: 80%;
+  max-width: 800px;
+  height: 300px;
+  border: 2px solid #F44336;
+  border-radius: 10px;
+  background-color: #FFF;
+  overflow-y: scroll;
+  text-align: left;
+}
+
+.log-window pre {
+  margin: 0;
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: 14px;
+  white-space: pre-wrap;
+}

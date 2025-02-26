@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+    <title>Controller View</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<header>
+    <h1>aligthment system - Controller View</h1>
+</header>
+<div class="container">
+    <p>Log</p>
+    <button class="rounded-button" id="toggle-log">Show Logs</button>
+    <div class="log-window" id="log-window" style="display: none;">
+        <pre id="log-content"></pre>
+    </div>
+</div>
+
+<script>
+    let eventSource;
+    document.getElementById("toggle-log").addEventListener("click", function() {
+        var logWindow = document.getElementById("log-window");
+        var button = document.getElementById("toggle-log");
+        // When first showing, start the EventSource
+        if (logWindow.style.display === "none") {
+            logWindow.style.display = "block";
+            button.innerText = "Hide Logs";
+
+            // Start EventSource if it hasn't already been started
+            if (!eventSource) {
+                eventSource = new EventSource("/stream");
+                eventSource.onmessage = function(event) {
+                    var logContent = document.getElementById("log-content");
+                    logContent.innerHTML += event.data.replace(/\n/g, '<br>') + '<br>';
+                    // Keep the log scrolled to the bottom
+                    logWindow.scrollTop = logWindow.scrollHeight;
+                };
+            }
+        } else {
+            logWindow.style.display = "none";
+            button.innerText = "Show Logs";
+            // Optionally, you may close the event source if you wish to stop streaming:
+            // eventSource.close();
+            // eventSource = null;
+        }
+    });
+</script>
+</body>
+</html>
