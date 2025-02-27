@@ -3,11 +3,15 @@ LABEL authors="grego"
 
 WORKDIR /app
 
-COPY .. /app
+COPY ./app /app
+
+COPY requirements.txt /app
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y libgl1
 
-RUN pip install --upgrade --no-cache-dir -r requirements.txt
+RUN python -m pip install --upgrade pip
+
+RUN pip install --upgrade --ignore-installed blinker --no-cache-dir -r requirements.txt
 
 EXPOSE 5000
 

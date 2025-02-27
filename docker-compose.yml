@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  flask-app:
+    image: gregogs/testings:controller-UI
+    ports:
+      - "5000:5000"
+    networks:
+      - controller-net
+networks:
+  controller-net:
+    driver: bridge
