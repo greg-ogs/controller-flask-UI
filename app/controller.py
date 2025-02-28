@@ -1,5 +1,6 @@
 import time
 
+print("This is a testing script only for demonstration purposes.")
 print("Controller script is running...", flush=True)
 print("Performing initialization...", flush=True)
 print("Controller operations have completed.", flush=True)
